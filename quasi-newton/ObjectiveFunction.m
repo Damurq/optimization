@@ -11,7 +11,7 @@
 %}
 
 % Método para evaluar la función objetivo.
-function fx = ObjectiveFunction(f, x)
-    fx = f(x);
+function fx = ObjectiveFunction(f, x, y)
+    fx = f(x,y);
 end
 
