@@ -22,8 +22,10 @@ function l = LinearSearch(f, x, d, Fx, Gf, Gx)
     p = double(x+l*dt);
     syms x y;
     Gp = double((subs(Gx,{x,y},{p(1),p(2)}))');
-
-    while ((f(p) > Fx+alfa*l*Gf'*d) || ( Gp*d > double(beta*Gf'*d) )) && (c < 100) 
+    
+    disp(Gp*dt);
+    
+    while ((f(p) > Fx+alfa*l*Gf'*d) | ( Gp*d > double(beta*Gf'*dt) )) & (c < 100) 
         l=0.5*l; 
         c=c+1; 
     end

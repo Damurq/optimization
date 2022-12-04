@@ -11,9 +11,13 @@
 %}
 
 % Método para leer una función.
-function [f,vf] = ReadFunction(prompt)
-    h = input(prompt, 's');
-    f = str2sym(h);
+function [f,vf, Fx] = ReadFunction(prompt)
+    fs = input(prompt, 's');    
+    Fx = strrep(fs, 'x', 'x(1)');
+    Fx = strrep(Fx, 'y', 'x(2)');
+    Fx = strcat('@(x)', Fx);
+    Fx = str2func(Fx);
+    f = str2sym(fs);
     vf = symvar(f);
 end
 
