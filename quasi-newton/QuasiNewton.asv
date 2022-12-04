@@ -52,11 +52,9 @@ disp(Fx);
 
 syms x y z;
 
-f = subs(sym2str(f), '(@(x)','');
-f = subs(sym2str(f), 'x(1)', 'x');
-f = subs(sym2str(f), 'x(2)', 'y');
-
-f = str2sym(f);
+f = subs(func2str(f), '(@(x)');
+f = subs(func2sr(f), 'x(1)', x);
+f = subs(func2sym(f), 'x(2)', y);
 
 g = 2*x+y-z;
 disp(symvar(str2func(f)));

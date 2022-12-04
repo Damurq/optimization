@@ -10,9 +10,9 @@
       - Valladares, Luis. C.I: V-26.370.986
 %}
 
-% Método para calcular la matriz hessiana de una función.
-function h = HessianFunction(f)
-    h = hessian(f);
+% Método para leer una función.
+function f = ReadFunction(prompt)
+    f = str2func(strcat('@(x)', input(prompt, 's')));
     return;
 end
 

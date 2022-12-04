@@ -11,7 +11,8 @@
 %}
 
 % Método para calcular el gradiente de una función.
-function grad = GradientFunction(x)
-    grad = [-400*x(1)*(x(2)-x(1)^2)-2*(1-x(1)); 200*(x(2)-x(1)^2)];
+function grad = GradientFunction(f)
+    syms x y z;
+    grad = gradient(f, [x, y, z]);
 end
 

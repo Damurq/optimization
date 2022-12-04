@@ -10,9 +10,9 @@
       - Valladares, Luis. C.I: V-26.370.986
 %}
 
-% Método para calcular la matriz hessiana de una función.
-function h = HessianFunction(f)
-    h = hessian(f);
-    return;
+% Método para calcular el gradiente de una función.
+function grad = GradientFunction(f)
+    syms x;
+    grad = gradient(f, [x(1), x(2, z]);
 end
 
