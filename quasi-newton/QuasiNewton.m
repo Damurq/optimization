@@ -84,10 +84,12 @@ grid on;
 xlabel('x');
 ylabel('y');
 
+disp(norm(Gf, 'inf'));
+
 % Se define la tabla que mostrará las iteraciones y se inician las
 % iteraciones.
 fprintf(' \t i \t (a, \t b) \t lambda \t ||gx|| \t f(x) \n')
-while norm(Gf, 'inf') >= 10^(-3) && k <= 35
+while norm(Gf, 'inf') >= 10^(-3) && k <= 5
     
    fprintf('%3.0f \t (%1.3f,%1.3f) \t %1.3f \t %3.3f \t %1.5f \n',k, x0(1), x0(2), l, norm(Gf), Fx)
    
@@ -132,9 +134,9 @@ while norm(Gf, 'inf') >= 10^(-3) && k <= 35
    x0   = x1;
    Fx   = Fx1;
    Gx   = Gx1;
-   Gf   = subs(Gx,{x,y},{x0(1), x0(2)});
+   Gf   = subs(Gx1,{x,y},{x1(1), x1(2)});
    k    = k+1;
-   
+
    % Se grafican los puntos dados por la actualización.
    plot(x0, Fx, '-s');
    

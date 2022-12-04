@@ -16,15 +16,20 @@ function l = LinearSearch(f, x, d, Fx, Gf, Gx)
     alfa=10^(-1); 
     beta=0.1; 
     c=1; 
+    xp = x;
     
     dt = transpose(d);
     
-    p = double(x+l*dt);
+    p = double(xp+l*dt);
+    
     syms x y;
     Gp = double((subs(Gx,{x,y},{p(1),p(2)}))');
-
-    while ((f(p) > Fx+alfa*l*Gf'*d) || ( Gp*d > double(beta*Gf'*d) )) && (c < 100) 
-        l=0.5*l; 
+    
+    while ((f(p) > Fx+alfa*l*Gf'*d) || ( Gp*d > beta*Gf'*d )) && (c < 100) 
+        la=0.5*l;
+        p = xp+la*dt;
+        Gp = double((subs(Gx,{x,y},{p(1),p(2)}))');
+        l = la;
         c=c+1; 
     end
 
