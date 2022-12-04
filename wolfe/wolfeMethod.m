@@ -7,6 +7,7 @@ function a = wolfeMethod(func,point,d)
 % d = dirección de descenso.
 
 % Inicialización de parámetros estáticos %
+syms x y z;
 k = 0;
 c1 = 0.5;
 c2 = 0.75;
@@ -19,15 +20,15 @@ fprintf('____________________________________________________');
 while 1
     fptd = func(point + t * d); % Evaluar la función en el punto + t * d %
     fp = func(point); % Evaluar la función en el punto %
-    g = gradient(fp); % Calcular gradiente de la función evaluada en el punto %
-    gtrasp = transpose(g); % Trasponer el gradiente de la función evaluada en el punto %
-    if (fptd > (fp + (c1 *t*gtrasp*d))) % Evalúa la primera condición de Wolfe %
+    g = gradient(func); % Calcular el gradiente de la función %
+    gtrasp = transpose(g); % Trasponer el gradiente de la función %
+    gtp = gtrasp(fp); % Calcular gradiente traspuesto de la función evaluada en el punto %
+    if (fptd > (fp + (c1 *t*gtp*d))) % Evalúa la primera condición de Wolfe %
         beta = t; % Actualiza el valor de beta %
         t = (1/2)*(alpha+beta); % Actualiza el valor de t %
     else 
-        gptd = gradient(fptd); % Evalúa el gradiente de la función en el punto + t * d %
-        gptdtrasp = transpose(gptd); % Traspone el gradiente de la función en el punto + t *d %
-        if ((gptdtrasp*d) < (c2*gtrasp*d)) % Evalúa la segunda condición de Wolfe %
+        gptd = gtrasp(fptd); % Evalúa el gradiente traspuesto de la función en el punto + t * d %
+        if ((gptd*d) < (c2*gtp*d)) % Evalúa la segunda condición de Wolfe %
             alpha = t; % Actualiza el valor de alfa %
             if (beta == Inf) % Evalúa si beta es infinito %
                 t = 2*alpha; % Si es infinito, t = 2 alpha %
