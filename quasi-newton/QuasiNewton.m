@@ -34,7 +34,7 @@ else
 end
 
 % Se indica la función a optimizar.
-f = ReadFunction('Indique la función a optimizar: ');
+[f,vf] = ReadFunction('Indique la función a optimizar: ');
 
 % Se indican el rango en el que se aplicará el algoritmo.
 a = input('Indique el punto inferior: ');
@@ -42,32 +42,29 @@ b = input('Indique el punto superior: ');
 
 % Se declaran e inicializan las variables a utilizar;
 % Punto inicial
-x0      = [a; b];
-% Función iniciada en el punto x0.
-Fx      = ObjectiveFunction(f, x0);
+x0      = [a,b];
+% Función iniciada en el punto [a,b]
+%Fx      = ObjectiveFunction(f, a, b);
 
 disp(f);
 disp(x0);
-disp(Fx);
-
-syms x y z;
-
-f = subs(sym2str(f), '(@(x)','');
-f = subs(sym2str(f), 'x(1)', 'x');
-f = subs(sym2str(f), 'x(2)', 'y');
-
-f = str2sym(f);
-
-g = 2*x+y-z;
-disp(symvar(str2func(f)));
+%disp(Fx);
 
 % Vector gradiente en el punto x0.
-Gx      = gradient('100*(y-x^2)^2+(1-x)^2');
+Gx = gradient(f,vf);
 disp(Gx);
+syms x y;
+Gf = subs(Gx,{x,y},{a,b});
+disp(Gf);
+Gt = transpose(Gx);
+Gtf = subs(Gt, {x,y},{a,b});
+disp (Gtf);
 
 % Matriz hessiana en el punto x0.
-Hx      = HessianFunction(Fx);
+Hx      = hessian(f,vf);
 disp(Hx);
+Hf = subs(Hx, {x,y},{a,b});
+disp(Hf);
 
 % Matriz hessiana fijada en el punto x0.
 Hfixed  = Hx;

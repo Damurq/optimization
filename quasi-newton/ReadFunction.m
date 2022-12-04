@@ -11,7 +11,9 @@
 %}
 
 % Método para leer una función.
-function f = ReadFunction(prompt)
-    f = str2func(strcat('@(x)', input(prompt, 's')));
+function [f,vf] = ReadFunction(prompt)
+    h = input(prompt, 's');
+    f = str2sym(h);
+    vf = symvar(f);
 end
 
