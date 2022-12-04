@@ -4,10 +4,11 @@ function point = cauchy(fx, initial, tolerance, maxIter)
     % initial: vector column - Punto inicial
     % tolerance: float - Tolerancia buscada
     % maxIter: inter - Iteraciones maximas
+    syms('z');
     do = true;
     sf = str2sym(fx); %retorna una función
     variables = symvar(sf); %retorna un vector fila con las variables Example [x,y]
-    grad = gradient(sf, v); % retorna un vector columna del gradiente
+    grad = gradient(sf, variables); % retorna un vector columna del gradiente
     point = initial;
     iter = 0;
     while do
@@ -21,7 +22,7 @@ function point = cauchy(fx, initial, tolerance, maxIter)
             g1 = point(1) + Fgrad(1)*z;
             g2 = point(2) + Fgrad(2)*z;
             x = g1; y = g2;
-            f_sub = subs(f);
+            f_sub = subs(sf);
             alpha = solve(diff(f_sub), z);
             S = transpose(point) + (alpha*Fgrad);
             point = S;
