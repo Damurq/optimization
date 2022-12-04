@@ -1,0 +1,52 @@
+function a = wolfeMethod(func,point,d)
+% Parámetros de salida:
+% a = valor que satisface las condiciones de Wolfe.
+% Parámetros de entrada:
+% func = función objetivo.
+% point = punto inicial.
+% d = dirección de descenso.
+
+% Inicialización de parámetros estáticos %
+k = 0;
+c1 = 0.5;
+c2 = 0.75;
+alpha = 0;
+t = 1;
+beta = Inf;
+show = sprintf("%13s","Iteración (k)","Alfa","Beta","t");
+fprintf('%s\n', show);
+fprintf('____________________________________________________');
+while 1
+    fptd = func(point + t * d); % Evaluar la función en el punto + t * d %
+    fp = func(point); % Evaluar la función en el punto %
+    g = gradient(fp); % Calcular gradiente de la función evaluada en el punto %
+    gtrasp = transpose(g); % Trasponer el gradiente de la función evaluada en el punto %
+    if (fptd > (fp + (c1 *t*gtrasp*d))) % Evalúa la primera condición de Wolfe %
+        beta = t; % Actualiza el valor de beta %
+        t = (1/2)*(alpha+beta); % Actualiza el valor de t %
+    else 
+        gptd = gradient(fptd); % Evalúa el gradiente de la función en el punto + t * d %
+        gptdtrasp = transpose(gptd); % Traspone el gradiente de la función en el punto + t *d %
+        if ((gptdtrasp*d) < (c2*gtrasp*d)) % Evalúa la segunda condición de Wolfe %
+            alpha = t; % Actualiza el valor de alfa %
+            if (beta == Inf) % Evalúa si beta es infinito %
+                t = 2*alpha; % Si es infinito, t = 2 alpha %
+            else 
+                t = (1/2)*(alpha+beta); % Sino, t = 1/2 (alpha + beta) %
+            end
+        else
+            a = t; % As el valor t que satisface las condiciones de Wolfe %            
+            show = sprintf('%13.3f',k,alpha,beta,t); % Obtiene los resultados del paso %
+            fprintf('%s\n', show);
+            return;
+        end
+    end
+    show = sprintf('%13.3f',k,alpha,beta,t); % Obtiene los resultados del paso %
+    fprintf('%s\n', show); % Muestra los resultados del paso %
+    k = k + 1;
+    if (k>249)
+        fprintf('Se alcanzó la cantidad máxima de iteraciones (250)')
+        a = t;
+        return;
+    end
+end

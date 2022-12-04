@@ -1,4 +1,11 @@
-clear all;
+clear all
+show = ["Iteración (k)","Alfa","Beta","t"];
+show = sprintf('%8.3f','Iteración (k)','Alfa','Beta','t);
+fprintf('%s\n', show);
+for i = 0:1:9
+    show = sprintf('%8.3f',i,(i*10),(i*20),(i*100));
+    fprintf('%s\n', show);
+end
 selection = menu('Seleccione el método a utilizar',...
     'Método de Bisección',...
     'Método de Wolfe',...
