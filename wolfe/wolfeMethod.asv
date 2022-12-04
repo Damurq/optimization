@@ -1,4 +1,3 @@
-clc
 % Parámetros de salida:
 % a = valor que satisface las condiciones de Wolfe.
 % Parámetros de entrada (input):
@@ -39,17 +38,23 @@ c2 = 0.75;
 alpha = 0;
 t = 1;
 beta = Inf;
+fprintf('Gradiente de la función: %s\n');
 grad = gradient(f,vf); % Calcular el gradiente de la función %
+disp(grad); % Mostrar el gradiente de la función %
+fprintf('Gradiente transpuesto: %s\n');
 gtrasp = transpose(grad); % Transponer el gradiente de la función %
+disp(gtrasp); % Transponer el gradiente de la función %
+gtp = subs(gtrasp,{x,y},{a,b}); % Calcular gradiente traspuesto de la función evaluada en el punto %
+disp(gtp);
 % Encabezado de resultados %
 show = sprintf("%13s","Iteración (k)","Alfa","Beta","t");
 fprintf('%s\n', show);
-disp('____________________________________________________');
+fprintf('____________________________________________________ %s\n');
 while 1
-    fp = fs(point);
-    gtp = subs(gtrasp,{x,y},{a,b}); % Calcular gradiente traspuesto de la función evaluada en el punto %
     ptd = double(point + t * d); % Evaluar la suma (x + t * d) %
+    fprintf('$',ptd);
     fptd = fs(ptd); % Evaluar la función en el punto + t * d %
+    fprintf('%s\n Función evaluada en ptd: ',fptd);
     if (fptd > (fp + (c1 * t * gtp * d))) % Evalúa la primera condición de Wolfe %
         beta = t; % Actualiza el valor de beta %
         t = (1/2) * (alpha + beta); % Actualiza el valor de t %
@@ -70,13 +75,11 @@ while 1
         end
     end
     show = sprintf('%13.3f',k,alpha,beta,t); % Obtiene los resultados del paso %
-    fprintf('%s\n', show); % Muestra los resultados del paso %
+    %fprintf('%s\n', show); % Muestra los resultados del paso %
     k = k + 1; % Incrementa el contador de iteraciones %
-    if (t<10^-6)
-        disp('Se alcanzó la tolerancia mínima de paso (10^-6)')
+    if (k>249)
+        fprintf('Se alcanzó la cantidad máxima de iteraciones (250)')
         a = t;
-        disp('Último t obtenido: ');
-        disp(t);
         return; % Devuelve el último valor t obtenido %  
     end
 end
