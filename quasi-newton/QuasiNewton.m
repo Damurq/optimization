@@ -52,7 +52,7 @@ disp(Fx);
 
 syms x y z;
 
-f = subs(sym2str(f), '(@(x)','');
+f = subs(sym2str(f), '@(x)','');
 f = subs(sym2str(f), 'x(1)', 'x');
 f = subs(sym2str(f), 'x(2)', 'y');
 
