@@ -12,8 +12,8 @@ function point = cauchy(fx, initial, tolerance, maxIter)
     point = initial;
     iter = 0;
     while do
-        x = initial(1); y = initial(2);
-        Fgrad = [subs(grad(1)), subs(grad(2))];
+        x = point(1); y = point(2);
+        Fgrad = [subs(grad(1)); subs(grad(2))];
         if norm(Fgrad) <= tolerance
             break
         elseif iter >= maxIter
@@ -24,7 +24,7 @@ function point = cauchy(fx, initial, tolerance, maxIter)
             x = g1; y = g2;
             f_sub = subs(sf);
             alpha = solve(diff(f_sub), z);
-            S = transpose(point) + (alpha*Fgrad);
+            S = point + (alpha*Fgrad);
             point = S;
         end
         iter = iter + 1;
