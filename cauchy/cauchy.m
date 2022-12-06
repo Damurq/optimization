@@ -14,6 +14,7 @@ function point = cauchy(fx, initial, tolerance, maxIter)
     while do
         x = point(1); y = point(2);
         Fgrad = [subs(grad(1)); subs(grad(2))];
+        Fgrad = -1*Fgrad;
         if norm(Fgrad) <= tolerance
             break
         elseif iter >= maxIter
