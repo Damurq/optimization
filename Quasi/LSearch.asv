@@ -1,0 +1,13 @@
+function alpha = LSearch(f, x, d)
+
+    syms x y z;
+    
+    comp = x + d * z;
+    
+    fsup = f(comp);
+    dif = diff(fsup);
+    
+    alpha = solve(di
+    
+end
+
