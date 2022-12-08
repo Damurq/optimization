@@ -34,7 +34,7 @@ else
 end
 
 % Se indica la función a optimizar.
-[f,vf, fs] = ReadFunction('Indique la función a optimizar: ');
+[f, vf, fs] = ReadFunction('Indique la función a optimizar: ');
 
 % Se indican el rango en el que se aplicará el algoritmo.
 a = input('Indique el punto inferior: ');
@@ -47,28 +47,19 @@ point = [a;b];
 
 % Función iniciada en el punto [a,b]
 Fx = fs(point);
-
-disp(f);
-disp(x0);
-
 plot(point, Fx, '-s');
-
 
 % Vector gradiente en el punto x0.
 Gx = gradient(f,vf);
-disp(Gx);
+
 syms x y;
 Gf = subs(Gx,{x,y},{a,b});
-disp(Gf);
 Gt = transpose(Gx);
 Gtf = subs(Gt, {x,y},{a,b});
-disp (Gtf);
 
 % Matriz hessiana en el punto x0.
 Hx      = hessian(f,vf);
-disp(Hx);
 Hf = subs(Hx, {x,y},{a,b});
-disp(Hf);
 
 % Matriz hessiana fijada en el punto x0.
 Hfixed  = Hx;
@@ -76,6 +67,8 @@ Hfixed  = Hx;
 l       = 1;
 % Iteración inicial = 0.
 k       = 0;
+% Cantidad de iteraciones máximas
+maxIter = 10;
 
 % Se instancia la pantalla donde se visualizará la gráfica.
 hold on;
@@ -84,15 +77,13 @@ grid on;
 xlabel('x');
 ylabel('y');
 
-disp(norm(Gf, 'inf'));
-
 Grade = Gx;
 Hmet = Hf;
 
 % Se define la tabla que mostrará las iteraciones y se inician las
 % iteraciones.
 fprintf(' \t i \t (a, \t b) \t lambda \t ||gx|| \t f(x) \n')
-while norm(Gf, 'inf') >= 10^(-3) && k <= 10
+while norm(Gf, 'inf') >= 10^(-6) && k < maxIter
     
    fprintf('%3.0f \t (%1.3f,%1.3f) \t %1.3f \t %3.3f \t %1.5f \n',k, x0(1), x0(2), l, norm(Gf), Fx)
    
@@ -110,7 +101,7 @@ while norm(Gf, 'inf') >= 10^(-3) && k <= 10
    end
    
    % Se define un lambda óptimo para la iteración.
-   l    = LinearSearch(fs, x0, d, Fx, Gf, Grade);
+   l    = Wolfe(f, x0, d);
    
    % Se calcula el punto x+1.
    x1   = x0+l*transpose(d);
