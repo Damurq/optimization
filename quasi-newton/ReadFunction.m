@@ -11,7 +11,7 @@
 %}
 
 % Método para leer una función.
-function [f,vf, Fx] = ReadFunction(prompt)
+function [f, vf, Fx] = ReadFunction(prompt)
     fs = input(prompt, 's');    
     Fx = strrep(fs, 'x', 'x(1)');
     Fx = strrep(Fx, 'y', 'x(2)');

@@ -1,3 +1,8 @@
+%{
+    Para testear Wolfe:
+        Solo requiere definir la función en la variable f
+        y el punto inicial.
+%}
 clc
 
 syms x y z;

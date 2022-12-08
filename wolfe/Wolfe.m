@@ -37,9 +37,9 @@ function t = Wolfe(f, x0, d)
     gtrasp = transpose(grad);
     
     % Encabezado de resultados %
-    show = sprintf("%13s","Iteración (k)","Alfa","Beta","t");
-    fprintf('%s\n', show);
-    disp('____________________________________________________');
+    %show = sprintf("%13s","Iteración (k)","Alfa","Beta","t");
+    %fprintf('%s\n', show);
+    %disp('____________________________________________________');
     
     % Inicia el ciclo iterativo...
     while true
@@ -107,31 +107,35 @@ function t = Wolfe(f, x0, d)
                     este el tamaño de paso.
             %}
             else
-                show = sprintf('%13.3f', k, alpha, beta, t); % Obtiene los resultados del paso %
-                fprintf('%s\n', show); % Muestra los resultados del paso %
+                %show = sprintf('%13.3f', k, alpha, beta, t); % Obtiene los resultados del paso %
+                %fprintf('%s\n', show); % Muestra los resultados del paso %
                 t = double(t);
                 
-                disp('Se consiguió un t óptimo: ')
-                disp(t);
+                %disp('Se consiguió un t óptimo: ')
+                %disp(t);
                 
                 return;
             end
 
-        
         end
         
-        show = sprintf('%13.3f',k,alpha,beta,t); % Obtiene los resultados del paso %
-        fprintf('%s\n', show); % Muestra los resultados del paso %
+        %show = sprintf('%13.3f',k,alpha,beta,t); % Obtiene los resultados del paso %
+        %fprintf('%s\n', show); % Muestra los resultados del paso %
         
          % Se actualiza el valor de k para la siguiente iteración.
         k = k+1;
         
+        if (t < 10^6)
+            t = double(t);
+            return;
+        end
+        
         % Se alcanza el máximo de iteraciones, por lo que se culmina el
         % algoritmo.
-        if (k > 250)
-            disp('Se alcanzó la cantidad máxima de iteraciones (250)')
-            disp('Último t obtenido: ');
-            disp(t);
+        if (k > 50)
+            %disp('Se alcanzó la cantidad máxima de iteraciones (250)')
+            %disp('Último t obtenido: ');
+            %disp(t);
             
             % Devuelve el último valor t obtenido % 
             t = double(t);
