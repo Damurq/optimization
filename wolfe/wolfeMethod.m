@@ -1,34 +1,48 @@
+%{
+ Optimización - 2022-2
+  Trabajo computacional N°1
+    Integrantes:
+      - Brizuela, Yurisbellys. C.I: V-27.142.239
+      - Manzano, Jesús. C.I: V-25.989.002
+      - Miranda, Marihec. C.I: V-26.120.075
+      - Montero, Michael. C.I: V-26.561.077
+      - Gustavo Rivero. C.I: V-26.772.857
+      - Valladares, Luis. C.I: V-26.370.986
+%}
+
 clc
+
 % Parámetros de salida:
-% a = valor que satisface las condiciones de Wolfe.
+% a     = valor que satisface las condiciones de Wolfe.
+
 % Parámetros de entrada (input):
-% f = función objetivo en tipo de variable símbolo.
-% vf = variables que usa la función objetivo.
-% fs = función objetivo en tipo de variable función.
-% a = primera coordenada del punto inicial.
-% b = segunda coordenada del punto inicial.
-% x0 = punto inicial en forma vector.
+% f     = función objetivo en tipo de variable símbolo.
+% vf    = variables que usa la función objetivo.
+% fs    = función objetivo en tipo de variable función.
+% a     = primera coordenada del punto inicial.
+% b     = segunda coordenada del punto inicial.
+% x0    = punto inicial en forma vector.
 % point = punto inicial en forma punto.
-% d = dirección de descenso.
+% d     = dirección de descenso.
 
 % Entrada de datos por pantalla %
 % Se indica la función a optimizar.
-[f,vf, fs] = ReadFunction('Indique la función a optimizar: ');
+[f, vf, fs] = ReadFunction('Indique la función a optimizar: ');
 
 % Se indican el rango en el que se aplicará el algoritmo.
-a = input('Indique la primera coordenada del punto inicial: ');
-b = input('Indique la segunda coordenada del punto inicial: ');
+a       = input('Indique la primera coordenada del punto inicial: ');
+b       = input('Indique la segunda coordenada del punto inicial: ');
 
 % Se indica la dirección de descenso.
-d = input('Indique la dirección de descenso: ');
+d       = input('Indique la dirección de descenso: ');
 
 % Se declaran e inicializan las variables a utilizar;
 % Punto inicial
 x0      = [a,b];
-point = [a;b];
+point   = [a;b];
 
 % Función iniciada en el punto [a,b]
-fp = fs(point);
+fp      = fs(point);
 
 
 % Inicialización de parámetros estáticos %
@@ -41,10 +55,12 @@ t = 1;
 beta = Inf;
 grad = gradient(f,vf); % Calcular el gradiente de la función %
 gtrasp = transpose(grad); % Transponer el gradiente de la función %
+
 % Encabezado de resultados %
 show = sprintf("%13s","Iteración (k)","Alfa","Beta","t");
 fprintf('%s\n', show);
 disp('____________________________________________________');
+
 while 1
     fp = fs(point);
     gtp = subs(gtrasp,{x,y},{a,b}); % Calcular gradiente traspuesto de la función evaluada en el punto %
