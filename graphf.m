@@ -15,6 +15,7 @@ function graph = graphf(f,xx,yy, xi, x0)
     hold on;
     plot3(x0(1),x0(2),0,'o', 'MarkerFaceColor',[0.6350 0.0780 0.1840]);
     legend('Funcion' ,'Punto inicial', 'Punto optimo','FontSize',12);
+    title(legend, 'Leyenda','FontSize',12);
     
     
 
