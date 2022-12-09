@@ -50,6 +50,9 @@ function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch)
 
     % Se indica la función a optimizar.
     [f, vf, fs] = ReadFunction(f);
+    
+    fig = uifigure;
+    fig.Position(3:4) = [722, 360];
 
     % Se indican el rango en el que se aplicará el algoritmo.
     a       = dom(1);
@@ -74,7 +77,7 @@ function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch)
     k       = 0;
 
     % Se instancia la pantalla donde se visualizará la gráfica.
-   
+    
     title 'Quasi-Newton' %Titulo de la grafica
     xlabel 'x' %Nombre del eje X
     ylabel 'y' %Nombre del eje Y
@@ -146,9 +149,10 @@ function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch)
     end
     hold off;
     
-    fig = figure;
-    fig.Name = 'Tabla del método Cuasi-Newton';
-    uiTable = uitable('ColumnName', {'iteración', 'x1', 'x2', 'alfa', '||g(x)||', 'f(x)'});
+    uit = uitable(fig);
+    uit.ColumnName = {'iteración', 'x1', 'x2', 'alfa', '||g(x)||', 'f(x)'};
+    
+    
     drawnow;
     set(uiTable, 'Data', table);
     %reshape;
