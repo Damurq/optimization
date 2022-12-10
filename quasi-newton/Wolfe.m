@@ -127,7 +127,7 @@ function t = Wolfe(f, x0, d, a, b, tol, maxIter)
                 %disp('Se consiguió un t óptimo: ')
                 %disp(t);
 
-                return;
+                break;
             end
             
         end
@@ -138,28 +138,28 @@ function t = Wolfe(f, x0, d, a, b, tol, maxIter)
          % Se actualiza el valor de k para la siguiente iteración.
         k = k+1;
         
-        if (t < tol)
+        if (t < 1/2)
             t = double(t);
             %show = sprintf('%13.3f', k, alpha, beta, t); % Obtiene los resultados del paso %
             %fprintf('%s\n', show); % Muestra los resultados del paso %
                 
             %disp('Se consiguió un t óptimo: ')
             %disp(t);
-            return;
+            break;
         end
         
         x0 = ptd;
         
         % Se alcanza el máximo de iteraciones, por lo que se culmina el
         % algoritmo.
-        if (k > 250)
+        if (k > maxIter)
             %disp('Se alcanzó la cantidad máxima de iteraciones (250)')
             %disp('Último t obtenido: ');
             %disp(t);
             
             % Devuelve el último valor t obtenido % 
             t = double(t);
-            return;  
+            break;  
         end
         
     end   

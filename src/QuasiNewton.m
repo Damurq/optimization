@@ -9,7 +9,7 @@
       - Gustavo Rivero. C.I: V-26.772.857
       - Valladares, Luis. C.I: V-26.370.986
 %}
-function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met, xx, yy)
+function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met, xy)
     %{
         Inputs:
             f: Función en formato string.
@@ -56,8 +56,8 @@ function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met, xx,
     [f, vf, fs] = ReadFunction(f);
 
     % Se indican el rango en el que se aplicará el algoritmo.
-    a       = dom(1);
-    b       = dom(2);
+    a       = 1e-4;
+    b       = 0.9;
 
     % Se declaran e inicializan las variables a utilizar;
     % Punto inicial
@@ -99,7 +99,8 @@ function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met, xx,
                 d2=transpose(d);
                 l = biseccion(f, vf, x0, d2, tol, maxIter);
             case 'Wolfe'
-                l = Wolfe(f, x0, d, a, b, tol, maxIter);
+                l = Wolfe(f, x0, d, a, b, 1/3, maxIter);
+                %[~, l] = AnotherWolfe(f, x0, a, b, tol, maxIter);
        end
        
        % Se calcula un nuevo punto.
@@ -143,7 +144,7 @@ function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met, xx,
        plot3(x0(1), x0(2), Fx, 'o'); %Grafica Sencilla
 
     end
-    graph = graphf(f, xx, yy, point, x0);
+    graph = graphf(f, xy(1), xy(2), point, x0);
 
     hold off;
     
@@ -152,6 +153,15 @@ function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met, xx,
     uiTable = uitable('ColumnName', {'iteración', 'x1', 'x2', 'alfa', '||g(x)||', 'f(x)'});
     drawnow;
     set(uiTable, 'Data', table);
+    
+    % Establece las unidades de la tabla como porcentajes
+    set(uiTable, 'Units', 'normalized');
+
+    % Define el nuevo tamaño de la tabla en porcentajes
+    newPosition = [0 0 1 1];
+
+    % Establece el nuevo tamaño de la tabla
+    set(uiTable, 'Position', newPosition);
     %reshape;
     
 end
