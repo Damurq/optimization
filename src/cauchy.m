@@ -64,5 +64,4 @@ function point = cauchy(fx, initial, tolerance, maxIter, bl)
     t = uitable('ColumnName', {'iteración', 'x1', 'x2', 'alfa', 'd1', 'd2'});
     drawnow;
     set(t, 'Data', table);
-    reshape
 end
