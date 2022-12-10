@@ -6,8 +6,8 @@ function output = ControllerNonLinear(fx, initial, maxIter, busquedaLineal, meth
     % maxIter - int - Número maximo de iteracioness
     % busquedaLineal - string - Nombre del método de busqueda no lineal
     % method - string - Nombre del método de busqueda lineal
-    % dom1 - vector fila - (X1,X2)
-    % dom2 - vector fila - (Y1,Y2)
+    % xx - vector fila - (X1,X2)
+    % yy - vector fila - (Y1,Y2)
     %
     % Long description
     if fx ~= ""
