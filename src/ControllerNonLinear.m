@@ -1,7 +1,13 @@
-function output = ControllerNonLinear(fx, initial, maxIter, busquedaLineal, method)
+function output = ControllerNonLinear(fx, initial, maxIter, busquedaLineal, method, dom1, dom2)
     %myFun - Description
     %
-    % Syntax: output = myFun(input)
+    % fx - string - función como string
+    % initial - vector columna - Punto inial [X;Y]
+    % maxIter - int - Número maximo de iteracioness
+    % busquedaLineal - string - Nombre del método de busqueda no lineal
+    % method - string - Nombre del método de busqueda lineal
+    % dom1 - vector fila - (X1,X2)
+    % dom2 - vector fila - (Y1,Y2)
     %
     % Long description
     if fx ~= ""
