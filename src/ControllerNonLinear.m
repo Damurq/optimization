@@ -1,4 +1,4 @@
-function output = ControllerNonLinear(fx, initial, maxIter, busquedaLineal, method, dom1, dom2)
+function output = ControllerNonLinear(fx, initial, maxIter, busquedaLineal, method, xx, yy)
     %myFun - Description
     %
     % fx - string - función como string
@@ -17,7 +17,9 @@ function output = ControllerNonLinear(fx, initial, maxIter, busquedaLineal, meth
             dom = [0, Inf];
             tolerance = 1e-6;
             if method == "Cauchy - Gradiente Descendente"
-                cauchy(fx, initial, tolerance, maxIter, busquedaLineal)
+                cauchy(fx, initial, tolerance, maxIter, busquedaLineal, xx, yy)
+            elseif method == "Newton"
+                Newton(fx, initial, tolerance, maxIter, busquedaLineal, xx, yy);
             elseif method == "Quasi newton - DFP"
                 QuasiNewton(fx,transpose(initial), dom, tolerance, maxIter, busquedaLineal, 2)
             elseif method == "Quasi newton - BFGS"

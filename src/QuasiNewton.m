@@ -103,6 +103,9 @@ function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met)
        switch linearSearch
            case 'Despeje'
                l = 1;
+            case 'Bisección'
+                d2=transpose(d);
+                alfa = biseccion(f, vf, x0, d, tol, maxIter);
            case 'Wolfe'
                l = Wolfe(f, x0, d, a, b, tol, maxIter);
        end

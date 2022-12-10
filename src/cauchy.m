@@ -1,4 +1,4 @@
-function point = cauchy(fx, initial, tolerance, maxIter, bl)
+function point = cauchy(fx, initial, tolerance, maxIter, bl,xx,yy)
     % cauchy algorithm
     % fx: string - función a optimizar
     % initial: vector column - Punto inicial
@@ -17,12 +17,6 @@ function point = cauchy(fx, initial, tolerance, maxIter, bl)
         y = point(2); %Coordenada Y del Punto
         Fgrad = [subs(grad(1)); subs(grad(2))]; %Evaluación del punto en el Gradiente
         d =- [Fgrad(1); Fgrad(2)]; %Dirección de descenso
-        plot3(x, y, subs(sf), 'o') %Grafica Sencilla
-        title 'Cauchy' %Titulo de la grafica
-        xlabel 'x' %Nombre del eje X
-        ylabel 'y' %Nombre del eje Y
-        grid on %Activamos cuadrilla
-        hold on %Mantenmos las graficas anteriores
         if norm(Fgrad) <= tolerance %Comparamos con la tolerancia
             fprintf('¡Punto Obtenido!')
             break
@@ -38,6 +32,9 @@ function point = cauchy(fx, initial, tolerance, maxIter, bl)
             switch bl
                 case 'Despeje'
                     alpha = solve(diff(f_sub), z); %Despeje de la variable Alfa
+                case 'Bisección'
+                    d2=transpose(d);
+                    alfa = biseccion(f, var, x0, d2, tolerance, maxIter);
                 case 'Wolfe'
                     a = dom(1);
                     b = dom(2);
@@ -56,6 +53,11 @@ function point = cauchy(fx, initial, tolerance, maxIter, bl)
         end
         iter = iter + 1; %Incremento del numero de Operación
     end
+    %llamar a la funcion para realizar la grafica pasando como parametros,
+    %la funcion, el intervalo del eje x, el intervalo del eje y, el punto
+    %inicial y el punto optimo
+    graph = graphf(sf, xx, yy, initial, point);
+
     fprintf('El punto obtenido en la iteracion N° %i es:\n', iter)
     f = figure;
     t = uitable('ColumnName', {'iteración', 'x1', 'x2', 'alfa', 'd1', 'd2'});
