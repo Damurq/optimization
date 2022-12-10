@@ -28,17 +28,15 @@ function point = cauchy(fx, initial, tolerance, maxIter, bl,xx,yy)
             x = g1; %Nuevo Punto X en funcion de Alfa
             y = g2; %Nuevo Punto Y en funcion de Alfa
             f_sub = subs(sf); %Sustituyendo valores en la funcion
-
             switch bl
                 case 'Despeje'
                     alpha = solve(diff(f_sub), z); %Despeje de la variable Alfa
                 case 'Bisección'
-                    d2=transpose(d);
-                    alfa = biseccion(sf, variables, point, d2, tolerance, maxIter);
+                    alpha = biseccion(sf, variables, transpose(point), transpose(d), tolerance, maxIter + 10);
                 case 'Wolfe'
                     a = dom(1);
                     b = dom(2);
-                    alpha = Wolfe(sf, transpose(point), d, a, b, tolerance, maxIter * 10);
+                    alpha = Wolfe(sf, point, d, a, b, tolerance, maxIter + 10);
                 otherwise
                     alpha = solve(diff(f_sub), z); %Despeje de la variable Alfa
             end
@@ -56,8 +54,7 @@ function point = cauchy(fx, initial, tolerance, maxIter, bl,xx,yy)
     %llamar a la funcion para realizar la grafica pasando como parametros,
     %la funcion, el intervalo del eje x, el intervalo del eje y, el punto
     %inicial y el punto optimo
-    graph = graphf(sf, xx, yy, initial, point);
-
+    graph = graphf(sf, xx, yy, transpose(initial), transpose(point));
     fprintf('El punto obtenido en la iteracion N° %i es:\n', iter)
     f = figure;
     t = uitable('ColumnName', {'iteración', 'x1', 'x2', 'alfa', 'd1', 'd2'});

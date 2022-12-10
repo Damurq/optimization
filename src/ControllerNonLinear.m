@@ -19,7 +19,7 @@ function output = ControllerNonLinear(fx, initial, maxIter, busquedaLineal, meth
             if method == "Cauchy - Gradiente Descendente"
                 cauchy(fx, initial, tolerance, maxIter, busquedaLineal, xx, yy)
             elseif method == "Newton"
-                Newton(fx, initial, tolerance, maxIter, busquedaLineal, xx, yy);
+                Newton(fx, transpose(initial), tolerance, maxIter, busquedaLineal, xx, yy);
             elseif method == "Quasi newton - DFP"
                 QuasiNewton(fx,transpose(initial), dom, tolerance, maxIter, busquedaLineal, 2, xx, yy)
             elseif method == "Quasi newton - BFGS"

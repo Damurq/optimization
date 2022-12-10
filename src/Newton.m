@@ -107,6 +107,12 @@ function x0 = Newton(fx, initial, tolerance, maxIter, busquedaLineal, xx, yy)
             fprintf("%1.0f \t| (%1.3f,%1.3f) \t| %1.3f \t| (%1.3f,%1.3f) \t\t|  %1.3f \n",k,x0(1),x0(2),alfa,d(1),d(2),norm(gradientf_k));
             
             
+            
+            %se calcula el punto de la siguiente iteracion
+            x1 = transpose(x0)+alfa*d;
+            %se calcula la transpuesta
+            x0 = transpose(x1);
+            
             fila = [k, double(x0), double(alfa), double(transpose(d))];
 
             if k == 0
@@ -114,12 +120,6 @@ function x0 = Newton(fx, initial, tolerance, maxIter, busquedaLineal, xx, yy)
             elseif k>0
                 table = [table; fila];
             end
-            
-            %se calcula el punto de la siguiente iteracion
-            x1 = transpose(x0)+alfa*d;
-            %se calcula la transpuesta
-            x0 = transpose(x1);
-            
             
             % Se actualiza el valor de k para la siguiente iteración.
             k=k+1;

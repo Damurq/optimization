@@ -15,7 +15,7 @@ function c = biseccion(f, var, x0, d2, tol, maxIter)
 
 %{
         Inputs:
-            f: Función en formato string.
+            f: Función. Example: @(x,y) sin(x)+cos(y)   - sym
             var: variables de la funcion en forma de vector fila [x y]
             x0: Punto inicial en forma de vector fila.
             d: Dirección de descenso en forma de vector.

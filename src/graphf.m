@@ -14,7 +14,7 @@ function graph = graphf(f,xx,yy,xi, x0)
 
 %{
         Inputs:
-            f: Función en formato string.
+            f: Función. Example: @(x,y) sin(x)+cos(y)   - sym
             xx: intervalo del eje x en forma de vector fila
             yy: intervalo del eje y en forma de vector fila
             xi: Punto inicial en forma de vector fila.

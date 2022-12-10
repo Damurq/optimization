@@ -19,7 +19,7 @@
 function t = Wolfe(f, x0, d, a, b, tol, maxIter)
     %{
         Inputs:
-            f: Función en formato string.
+            f: Función. Example: @(x,y) sin(x)+cos(y)   - sym
             x0: Punto inicial en forma de vector fila.
             d: Dirección de descenso.
             a: Extremo inferior (Alpha). Se sugiere 0.
