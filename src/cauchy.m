@@ -36,7 +36,7 @@ function point = cauchy(fx, initial, tolerance, maxIter, bl,xx,yy)
                 case 'Wolfe'
                     a = dom(1);
                     b = dom(2);
-                    alpha = Wolfe(sf, point, d, a, b, tolerance, maxIter + 10);
+                    alpha = Wolfe(sf, transpose(point), d, a, b, tolerance, maxIter + 10);
                 otherwise
                     alpha = solve(diff(f_sub), z); %Despeje de la variable Alfa
             end
