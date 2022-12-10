@@ -9,7 +9,7 @@
       - Gustavo Rivero. C.I: V-26.772.857
       - Valladares, Luis. C.I: V-26.370.986
 %}
-function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met)
+function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met, xx, yy)
     %{
         Inputs:
             f: Función en formato string.
@@ -78,14 +78,6 @@ function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met)
     k       = 0;
 
     % Se instancia la pantalla donde se visualizará la gráfica.
-   
-    title 'Quasi-Newton' %Titulo de la grafica
-    xlabel 'x' %Nombre del eje X
-    ylabel 'y' %Nombre del eje Y
-    zlabel 'z' %Nombre del eje Z
-    grid on %Activamos cuadrilla
-    hold on %Mantenmos las graficas anteriores
-    plot3(x0(1), x0(2), fs([x0(1);x0(2)]), 'o'); %Grafica Sencilla
 
     Grade   = Gx;
     Hmet    = eye(length(vf));
@@ -105,9 +97,9 @@ function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met)
                l = 1;
             case 'Bisección'
                 d2=transpose(d);
-                alfa = biseccion(f, vf, x0, d, tol, maxIter);
-           case 'Wolfe'
-               l = Wolfe(f, x0, d, a, b, tol, maxIter);
+                l = biseccion(f, vf, x0, d2, tol, maxIter);
+            case 'Wolfe'
+                l = Wolfe(f, x0, d, a, b, tol, maxIter);
        end
        
        % Se calcula un nuevo punto.
@@ -151,6 +143,8 @@ function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met)
        plot3(x0(1), x0(2), Fx, 'o'); %Grafica Sencilla
 
     end
+    graph = graphf(f, xx, yy, point, x0);
+
     hold off;
     
     fig = figure;

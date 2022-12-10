@@ -1,17 +1,17 @@
 function point = cauchy(fx, initial, tolerance, maxIter, bl,xx,yy)
     % cauchy algorithm
-    % fx: string - función a optimizar
-    % initial: vector column - Punto inicial
-    % tolerance: float - Tolerancia buscada
-    % maxIter: inter - Iteraciones maximas
+    % fx:           string - función a optimizar
+    % initial:      vector column - Punto inicial
+    % tolerance:    float - Tolerancia buscada
+    % maxIter:      int - Iteraciones maximas
     syms('z');
-    dom = [0, Inf];
-    do = true;
-    sf = str2sym(fx); %retorna una función
-    variables = symvar(sf); %retorna un vector fila con las variables Example [x,y]
+    dom = [0, Inf];             % Dominio para aplicar Wolfe    - vector fila
+    do = true;                  % Ejecuta el while              - bolean
+    sf = str2sym(fx);           % retorna una función           - sym
+    variables = symvar(sf);     % variables. Example [x,y]      - vector fila
     grad = gradient(sf, variables); % retorna un vector columna del gradiente
-    point = initial; %Punto inicial
-    iter = 0; %Numero de iteración
+    point = initial;                % Punto actual      - vector columna
+    iter = 0;                       % Iteración actual  - int
     while do
         x = point(1); %Coordenada X del Punto
         y = point(2); %Coordenada Y del Punto
@@ -34,7 +34,7 @@ function point = cauchy(fx, initial, tolerance, maxIter, bl,xx,yy)
                     alpha = solve(diff(f_sub), z); %Despeje de la variable Alfa
                 case 'Bisección'
                     d2=transpose(d);
-                    alfa = biseccion(f, var, x0, d2, tolerance, maxIter);
+                    alfa = biseccion(sf, variables, point, d2, tolerance, maxIter);
                 case 'Wolfe'
                     a = dom(1);
                     b = dom(2);

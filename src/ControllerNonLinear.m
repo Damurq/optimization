@@ -21,9 +21,9 @@ function output = ControllerNonLinear(fx, initial, maxIter, busquedaLineal, meth
             elseif method == "Newton"
                 Newton(fx, initial, tolerance, maxIter, busquedaLineal, xx, yy);
             elseif method == "Quasi newton - DFP"
-                QuasiNewton(fx,transpose(initial), dom, tolerance, maxIter, busquedaLineal, 2)
+                QuasiNewton(fx,transpose(initial), dom, tolerance, maxIter, busquedaLineal, 2, xx, yy)
             elseif method == "Quasi newton - BFGS"
-                QuasiNewton(fx,transpose(initial), dom, tolerance, maxIter, busquedaLineal, 1)
+                QuasiNewton(fx,transpose(initial), dom, tolerance, maxIter, busquedaLineal, 1, xx, yy)
             end
         else
             warndlg('Debe introducir una función con 2 variables independientes - Ejem: x+2*y', 'Error')
