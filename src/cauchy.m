@@ -55,9 +55,6 @@ function point = cauchy(fx, initial, tolerance, maxIter, bl,xx,yy)
     %la funcion, el intervalo del eje x, el intervalo del eje y, el punto
     %inicial y el punto optimo
     graph = graphf(sf, xx, yy, transpose(initial), transpose(point));
-    fprintf('El punto obtenido en la iteracion N° %i es:\n', iter)
-    f = figure;
-    t = uitable('ColumnName', {'iteración', 'x1', 'x2', 'alfa', 'd1', 'd2'});
-    drawnow;
-    set(t, 'Data', table);
+    tab = TableBuilder(table)
+    
 end
