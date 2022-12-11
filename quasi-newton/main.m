@@ -13,13 +13,13 @@
         x: Punto mínimo obtenido.
         fx: Valor mínimo obtenido.
 %}
-f = 'y^2+x^2+1';
-x0 = [-1, 1];
+f = '9*(x-12)^2+10*(y-15)^2';
+x0 = [1, 1];
 
 tol = 1e-6;
-maxIter = 250;
+maxIter = 5;
 
-linearSearch = 2;
+linearSearch = 'Wolfe';
 
 dom = [0, Inf];
 

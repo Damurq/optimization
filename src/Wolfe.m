@@ -138,7 +138,7 @@ function t = Wolfe(f, x0, d, a, b, tol, maxIter)
          % Se actualiza el valor de k para la siguiente iteración.
         k = k+1;
         
-        if (t < 1/2)
+        if (t < tol)
             t = double(t);
             %show = sprintf('%13.3f', k, alpha, beta, t); % Obtiene los resultados del paso %
             %fprintf('%s\n', show); % Muestra los resultados del paso %
