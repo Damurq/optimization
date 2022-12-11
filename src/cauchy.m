@@ -17,8 +17,10 @@ function point = cauchy(fx, initial, tolerance, maxIter, bl,xx,yy)
         y = point(2); %Coordenada Y del Punto
         Fgrad = [subs(grad(1)); subs(grad(2))]; %Evaluación del punto en el Gradiente
         d =- [Fgrad(1); Fgrad(2)]; %Dirección de descenso
-        if norm(Fgrad) <= tolerance %Comparamos con la tolerancia
+        if norm(Fgrad) == 0
             fprintf('¡Punto Obtenido!')
+            break
+        elseif norm(Fgrad) <= tolerance %Comparamos con la tolerancia
             break
         elseif iter >= maxIter %Comparamos con el maximo de iteraciones
             break
@@ -56,5 +58,6 @@ function point = cauchy(fx, initial, tolerance, maxIter, bl,xx,yy)
     %inicial y el punto optimo
     graph = graphf(sf, xx, yy, transpose(initial), transpose(point));
     tab = TableBuilder(table)
-    
+    msgbox(['El punto óptimo x* es:  ', num2str(double(transpose(point)))])
+    msgbox(['Y el valor óptimo es: f(x*)    :  ', num2str(double(subs(sf,variables,transpose(point))))])
 end
