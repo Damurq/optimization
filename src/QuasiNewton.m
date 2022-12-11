@@ -153,5 +153,6 @@ function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met, xx,
     drawnow;
     set(uiTable, 'Data', table);
     %reshape;
-    
+    msgbox(['El punto óptimo x* es:  ', num2str(double(x0))])
+    msgbox(['Y el valor óptimo es: f(x*)    :  ', num2str(double(subs(f,vf,x0)))])
 end

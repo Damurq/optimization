@@ -151,4 +151,6 @@ function x0 = Newton(fx, initial, tolerance, maxIter, busquedaLineal, xx, yy)
     t = uitable('ColumnName', {'iteración', 'x1', 'x2', 'alfa', 'd1', 'd2'});
     drawnow;
     set(t, 'Data', table);
+    msgbox(['El punto óptimo x* es:  ', num2str(double(x0))])
+    msgbox(['Y el valor óptimo es: f(x*)    :  ', num2str(double(subs(str2sym(fx),var,x0)))])
 end
