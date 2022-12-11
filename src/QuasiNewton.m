@@ -6,10 +6,11 @@
       - Manzano, Jesús. C.I: V-25.989.002
       - Miranda, Marihec. C.I: V-26.120.075
       - Montero, Michael. C.I: V-26.561.077
-      - Gustavo Rivero. C.I: V-26.772.857
+      - Rivero, Gustavo. C.I: V-26.772.857
       - Valladares, Luis. C.I: V-26.370.986
 %}
 function [x0, Fx] = QuasiNewton(f, x0, dom, tol, maxIter, linearSearch, met, xy)
+    % Método para ejecutar el algoritmo de QuasiNewton.
     %{
         Inputs:
             f: Función en formato string.

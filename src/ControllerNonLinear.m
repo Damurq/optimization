@@ -1,15 +1,39 @@
+%{
+ Optimización - 2022-2
+  Trabajo computacional N°1
+    Integrantes:
+      - Brizuela, Yurisbellys. C.I: V-27.142.239
+      - Manzano, Jesús. C.I: V-25.989.002
+      - Miranda, Marihec. C.I: V-26.120.075
+      - Montero, Michael. C.I: V-26.561.077
+      - Rivero, Gustavo. C.I: V-26.772.857
+      - Valladares, Luis. C.I: V-26.370.986
+%}
 function output = ControllerNonLinear(fx, initial, maxIter, busquedaLineal, method, xx, yy)
-    %myFun - Description
-    %
-    % fx - string - función como string
-    % initial - vector columna - Punto inial [X;Y]
-    % maxIter - int - Número maximo de iteracioness
-    % busquedaLineal - string - Nombre del método de busqueda no lineal
-    % method - string - Nombre del método de busqueda lineal
-    % xx - vector fila - (X1,X2)
-    % yy - vector fila - (Y1,Y2)
-    %
-    % Long description
+    % Método controlador para la vista del sistema
+    %{
+        Inputs:
+            fx:             Función en formato string.
+            initial:        Punto inicial en formato vector columna. P.ej. [x;y]
+            maxIter:        Cantidad máxima de iteraciones a ejecutar por los
+                            algoritmos.
+            busquedaLineal: Nombre del método de búsqueda no lineal a
+                            ejecutar en string.
+                                - Biseccion
+                                - Wolfe
+                                - Despeje
+            method:         Nombre del método de búsqueda lineal en formato
+                            string.
+                                - Cauchy - GradienteDescendente
+                                - Newton
+                                - Quasi newton - DFP
+                                - Quasi newton BFGS
+            xx:             Vector fila de dominio en eje X. P.ej. [X1, X2]
+            yy:             Vector fila de dominio en eje Y. P.ej. [Y1, Y2]
+        Outputs:
+            output:         No se devuelve ningún valor.
+    %}
+
     if fx ~= ""
         f = str2sym(fx);
         vf = symvar(f);

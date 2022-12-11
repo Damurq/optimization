@@ -6,20 +6,14 @@
       - Manzano, Jesús. C.I: V-25.989.002
       - Miranda, Marihec. C.I: V-26.120.075
       - Montero, Michael. C.I: V-26.561.077
-      - Gustavo Rivero. C.I: V-26.772.857
+      - Rivero, Gustavo. C.I: V-26.772.857
       - Valladares, Luis. C.I: V-26.370.986
 %}
-
-%{
-    Parámetros de entrada:
-    - f :   Función en formato symbolic.
-    - x0:   Punto inicial.
-    - d :   Dirección de descenso.
-%}
 function t = Wolfe(f, x0, d, a, b, tol, maxIter)
+    % Función para evaluar las condiciones de Wolfe.
     %{
         Inputs:
-            f: Función en formato string.
+            f: Función. Example: @(x,y) sin(x)+cos(y)   - sym
             x0: Punto inicial en forma de vector fila.
             d: Dirección de descenso.
             a: Extremo inferior (Alpha). Se sugiere 0.

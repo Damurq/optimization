@@ -6,12 +6,12 @@
       - Manzano, Jesús. C.I: V-25.989.002
       - Miranda, Marihec. C.I: V-26.120.075
       - Montero, Michael. C.I: V-26.561.077
-      - Gustavo Rivero. C.I: V-26.772.857
+      - Rivero, Gustavo. C.I: V-26.772.857
       - Valladares, Luis. C.I: V-26.370.986
 %}
 function x0 = Newton(fx, initial, tolerance, maxIter, busquedaLineal, xx, yy)
-
-%{
+    % Método para ejecutar el algoritmo de Newton.
+    %{
         Inputs:
             fx: Función en formato string.
             initial: Punto inicial en forma de vector fila.
@@ -20,9 +20,9 @@ function x0 = Newton(fx, initial, tolerance, maxIter, busquedaLineal, xx, yy)
             busquedaLineal: Tipo de búsqueda lineal como string;
                 Bisección
                 Wolfe.
-                despeje
-            xx: intervalo del eje x en forma de vector fila
-            yy: intervalo del eje y en forma de vector fila
+                Despeje
+            xx: Intervalo del eje x en forma de vector fila
+            yy: Intervalo del eje y en forma de vector fila
         Outputs:
             x0: Punto mínimo obtenido.
             Fx: Valor mínimo obtenido.

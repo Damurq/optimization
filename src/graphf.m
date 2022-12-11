@@ -6,21 +6,20 @@
       - Manzano, Jesús. C.I: V-25.989.002
       - Miranda, Marihec. C.I: V-26.120.075
       - Montero, Michael. C.I: V-26.561.077
-      - Gustavo Rivero. C.I: V-26.772.857
+      - Rivero, Gustavo. C.I: V-26.772.857
       - Valladares, Luis. C.I: V-26.370.986
 %}
-
 function graph = graphf(f,xx,yy,xi, x0)
-
-%{
+    % Método para mostrar gráfica de una función de tres variables.
+    %{
         Inputs:
-            f: Función. Example: @(x,y) sin(x)+cos(y)   - sym
-            xx: intervalo del eje x en forma de vector fila
-            yy: intervalo del eje y en forma de vector fila
-            xi: Punto inicial en forma de vector fila.
-            x0: Punto optimo en forma de vector fila.
+            f:      Función. P.ej.: @(x,y) sin(x)+cos(y)   - sym
+            xx:     Intervalo del eje x en forma de vector fila
+            yy:     Intervalo del eje y en forma de vector fila
+            xi:     Punto inicial en forma de vector fila.
+            x0:     Punto optimo en forma de vector fila.
         Outputs:
-             graph: la grafica de la funcion
+             graph: La grafica de la funcion
     %}
 
     %calcular el dominio con los intervalos ingresados por parametro

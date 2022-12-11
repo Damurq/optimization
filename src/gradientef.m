@@ -6,18 +6,19 @@
       - Manzano, Jesús. C.I: V-25.989.002
       - Miranda, Marihec. C.I: V-26.120.075
       - Montero, Michael. C.I: V-26.561.077
-      - Gustavo Rivero. C.I: V-26.772.857
+      - Rivero, Gustavo. C.I: V-26.772.857
       - Valladares, Luis. C.I: V-26.370.986
 %}
 function Fgrand = gradientef(f, var, x0)
-%{
+    % Método para calcular el gradiente de una función en un punto.
+    %{
         Inputs:
-            f: Función en formato string.
-            var: variables de la funcion en forma de vector fila [x y]
-            x0: Punto inicial en forma de vector fila.
+            f:       Función en formato string.
+            var:     Variables de la funcion en forma de vector fila [x y]
+            x0:      Punto inicial en forma de vector fila.
 
         Outputs:
-             Fgrand: el gradiente evaluado en el punto
+             Fgrand: El gradiente evaluado en el punto
 
     %}
     grad = gradient(f, var); % Calcular gradiente

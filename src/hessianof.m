@@ -6,18 +6,18 @@
       - Manzano, Jesús. C.I: V-25.989.002
       - Miranda, Marihec. C.I: V-26.120.075
       - Montero, Michael. C.I: V-26.561.077
-      - Gustavo Rivero. C.I: V-26.772.857
+      - Rivero, Gustavo. C.I: V-26.772.857
       - Valladares, Luis. C.I: V-26.370.986
 %}
 function Fhessian = hessianof(f,var,x0)
-
-%{
+    % Método para calcular una matriz hessiana.
+    %{
         Inputs:
-            f: Función en formato string.
-            var: variables de la funcion en forma de vector fila [x y]
-            x0: Punto inicial en forma de vector fila.
+            f:          Función en formato string.
+            var:        Variables de la funcion en forma de vector fila [x y]
+            x0:         Punto inicial en forma de vector fila.
         Outputs:
-             Fhessian: el hessiano evaluado en el punto
+             Fhessian:  El hessiano evaluado en el punto
     %}
 
 h = hessian(f, var);%se calcula la hessiana
