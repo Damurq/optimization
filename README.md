@@ -1,4 +1,4 @@
-## Getting Started 🚀
+## Comenzando 🚀
 
 El código plasmado en este repositorio, corresponde al primer trabajo computacional de optimización de ecuaciones mediante las búsquedas lineales, entre ellas se encuentran los algoritmos de búsqueda lineal como el método de Cauchy o método del gradiente, el método de Newton y el método de Cuasi-Newton, en el que se encuentran plasmadas las actualizaciones BFGS y DFP. Asimismo, entre los algoritmos de optimización se encuentran las del método bisección y el método de Wolfe.
 
