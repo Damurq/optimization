@@ -1,9 +1,8 @@
 ## Getting Started 🚀
 
-Asimismo, el trabajo computacional corresponde a la optimización de ecuaciones mediante las búsquedas lineales, entre ellas se encuentran los algoritmos de búsqueda lineal como el método de Cauchy o método del gradiente, el método de Newton y el método de Cuasi-Newton, en el que se encuentran plasmadas las actualizaciones BFGS y DFP. Asimismo, entre los algoritmos de optimización se encuentran las del método bisección y el método de Wolfe.
+El código plasmado en este repositorio, corresponde al primer trabajo computacional de optimización de ecuaciones mediante las búsquedas lineales, entre ellas se encuentran los algoritmos de búsqueda lineal como el método de Cauchy o método del gradiente, el método de Newton y el método de Cuasi-Newton, en el que se encuentran plasmadas las actualizaciones BFGS y DFP. Asimismo, entre los algoritmos de optimización se encuentran las del método bisección y el método de Wolfe.
 
 Con el fin de plasmar estos métodos, se realizó una aplicación en el sistema de cómputo numérico MATLAB. Esta aplicación contiene una interfaz gráfica para mayor facilidad en el uso del sistema. La aplicación contiene las opciones necesarias para poder seleccionar el método y algoritmo con el que se desea evaluar una función ingresada por el usuario.
-
 
 ## Requerimientos 📋
 
@@ -33,9 +32,9 @@ Pasos para ejecutar la interfaz de usuario:
 
 2. Abrir Matlab, entrar en la carpeta del proyecto, luego en la carpeta `src` y por último hacer doble click sobre el archivo `app1.mlapp`
 
-3. Se abrirá una nueva ventana, aquí debemos presionar el botón `Run` en la parte superior del menú de opciones.
+3. Se abrirá una nueva ventana, aquí se debe presionar el botón `Run` en la parte superior del menú de opciones.
 
-4. Nuestra aplicación se a ejecutado, ahora puedes comenzar a usarla
+4. Nuestra aplicación se ha ejecutado, ahora es posible comenzar a usarla
 
 ## Autores 💻
 
@@ -43,7 +42,7 @@ Pasos para ejecutar la interfaz de usuario:
 * Manzano, Jesús.
 * Miranda, Marihec.
 * Montero, Michael.
-* Gustavo Rivero.
+* Rivero, Gustavo.
 * Valladares, Luis.
 
 ---

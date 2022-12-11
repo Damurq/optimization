@@ -6,14 +6,12 @@
       - Manzano, Jesús. C.I: V-25.989.002
       - Miranda, Marihec. C.I: V-26.120.075
       - Montero, Michael. C.I: V-26.561.077
-      - Gustavo Rivero. C.I: V-26.772.857
+      - Rivero, Gustavo. C.I: V-26.772.857
       - Valladares, Luis. C.I: V-26.370.986
 %}
-
 function c = biseccion(f, var, x0, d2, tol, maxIter)
     %Busqueda biseccion
-
-%{
+    %{
         Inputs:
             f: Función. Example: @(x,y) sin(x)+cos(y)   - sym
             var: variables de la funcion en forma de vector fila [x y]
@@ -22,7 +20,7 @@ function c = biseccion(f, var, x0, d2, tol, maxIter)
             tol: Tolerancia aceptada.
             maxIter: Cantidad máxima de iteraciones.
         Outputs:
-             a: Extremo inferior. Se sugiere 0.
+            a: Extremo inferior. Se sugiere 0.
             b: Extremo superior. Se sugiere 1.
     %}
 

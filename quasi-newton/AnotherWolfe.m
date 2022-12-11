@@ -1,4 +1,26 @@
+%{
+ Optimización - 2022-2
+  Trabajo computacional N°1
+    Integrantes:
+      - Brizuela, Yurisbellys. C.I: V-27.142.239
+      - Manzano, Jesús. C.I: V-25.989.002
+      - Miranda, Marihec. C.I: V-26.120.075
+      - Montero, Michael. C.I: V-26.561.077
+      - Rivero, Gustavo. C.I: V-26.772.857
+      - Valladares, Luis. C.I: V-26.370.986
+%}
 function [xn, fval] = AnotherWolfe(f, x0, a, b, maxIter, tol)
+    % Método alternativo de condiciones de Wolfe.
+    %{
+        Inputs:
+            f:      Función a evaluar en formato symbolic.
+            x0:     Punto inicial en el que se evaluará las condiciones de
+                    Wolfe en formato vector fila.
+            a:      Extremo inferior en formato double.
+            b:      Extremo superior en formato double.
+            tol:    Tolerancia aceptada.
+            maxIter:Cantidad máxima de iteraciones a ejecutar.
+    %}
     % Inicializa el punto inicial y el gradiente en ese punto
     
     syms x y z;

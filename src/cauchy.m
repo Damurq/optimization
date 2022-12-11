@@ -1,9 +1,26 @@
+%{
+ Optimización - 2022-2
+  Trabajo computacional N°1
+    Integrantes:
+      - Brizuela, Yurisbellys. C.I: V-27.142.239
+      - Manzano, Jesús. C.I: V-25.989.002
+      - Miranda, Marihec. C.I: V-26.120.075
+      - Montero, Michael. C.I: V-26.561.077
+      - Rivero, Gustavo. C.I: V-26.772.857
+      - Valladares, Luis. C.I: V-26.370.986
+%}
 function point = cauchy(fx, initial, tolerance, maxIter, bl,xx,yy)
-    % cauchy algorithm
-    % fx:           string - función a optimizar
-    % initial:      vector column - Punto inicial
-    % tolerance:    float - Tolerancia buscada
-    % maxIter:      int - Iteraciones maximas
+    % Método para ejecutar algoritmo de Cauchy.
+    %{
+        Inputs:
+            fx:         Función a optimizar en formato string.
+            initial:    Punto inicial en formato vector columna.
+            tolerance:  Tolerancia aceptada en formato float.
+            maxIter:    Cantidad máxima de iteraciones en formato int.
+        Outputs:
+            point:      Punto óptimo calculado.
+    %}
+
     syms('z');
     dom = [0, Inf];             % Dominio para aplicar Wolfe    - vector fila
     do = true;                  % Ejecuta el while              - bolean
